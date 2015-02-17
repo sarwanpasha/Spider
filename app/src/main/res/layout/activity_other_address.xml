@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f92b2b2b" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="10dip" >
+        <!--  View Title Label -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:text="Please Enter Address"
+            android:textSize="25dip"
+            android:textStyle="bold"
+            android:background="#ff858585" />
+        <!--  Email Label -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:background="#ff858585" />
+        <!--  Email TextField -->
+        <EditText
+            android:id="@+id/addressCity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <!--  Password Label -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Area"
+            android:background="#ff858585" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/addressArea"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:password="true" />
+
+        <!--  Password Label -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Street number"
+            android:background="#ff858585" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/addressStreet"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:password="true" />
+
+        <!--  Password Label -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="House Number"
+            android:background="#ff858585" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/addressHouse"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:password="true" />
+
+        <!--  Error message -->
+        <TextView android:id="@+id/login_error"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#e30000"
+            android:padding="10dip"
+            android:textStyle="bold"/>
+
+        <!--  Login Button -->
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Send"
+            android:background="#ff858585" />
+
+    </LinearLayout>
+
+</ScrollView>
