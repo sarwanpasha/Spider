@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#3b3b3b">
+    android:background="#f9101010">
 
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="WELCOME TO SPIDER"
         android:textSize="40dip"
         android:gravity="center"
-        android:layout_marginTop="20dip"/>
+        android:layout_marginTop="20dip"
+        android:textColor="#ffd6d6d6" />
 
     <Button android:layout_width="fill_parent"
         android:layout_height="wrap_content"
