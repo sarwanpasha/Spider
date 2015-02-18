@@ -39,6 +39,12 @@ public class register extends Activity implements OnClickListener{
     EditText inputEmail;
     EditText inputPassword;
     TextView registerErrorMsg;
+    EditText inputCity;
+    EditText inputArea;
+    EditText inputStreet;
+    EditText inputHouse;
+    EditText inputCnic;
+
 
     // JSON Response node names
     private static String KEY_SUCCESS = "success";
@@ -59,11 +65,17 @@ public class register extends Activity implements OnClickListener{
         inputFullName = (EditText) findViewById(R.id.registerName);
         inputEmail = (EditText) findViewById(R.id.registerEmail);
         inputPassword = (EditText) findViewById(R.id.registerPassword);
+        inputCity = (EditText) findViewById(R.id.registercity);
+        inputArea = (EditText) findViewById(R.id.registerArea);
+        inputStreet = (EditText) findViewById(R.id.registerStreet);
+        inputHouse = (EditText) findViewById(R.id.registerHouse);
+        inputCnic = (EditText) findViewById(R.id.registerCNIC);
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
         registerErrorMsg = (TextView) findViewById(R.id.register_error);
-        db=openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS student(name VARCHAR,email VARCHAR,password VARCHAR);");
+        db=openOrCreateDatabase("Spider", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS student(name VARCHAR,email VARCHAR,password VARCHAR," +
+                "city VARCHAR,area VARCHAR,street VARCHAR,house VARCHAR,cnic VARCHAR);");
 
         // Register Button Click event
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +92,9 @@ public class register extends Activity implements OnClickListener{
                     return;
                 }
                 db.execSQL("INSERT INTO student VALUES('"+inputFullName.getText()+"','"+inputEmail.getText()+
-                        "','"+inputPassword.getText()+"');");
+                        "','"+inputPassword.getText()+
+                        "','"+inputCity.getText()+"','"+inputArea.getText()+
+                        "','"+inputStreet.getText()+"','"+inputHouse.getText()+"','"+inputCnic.getText()+"');");
                 showMessage("Success", "Record added");
                 clearText();
                 Intent i = new Intent(getApplicationContext(),MainActivity.class);

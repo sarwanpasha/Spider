@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,62 +48,70 @@ public class MainActivity extends ActionBarActivity {
     private static String KEY_EMAIL = "email";
     private static String KEY_CREATED_AT = "created_at";
     SQLiteDatabase db;
+    String userEmail;
+public MainActivity(){
 
+}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Importing all assets like buttons, text fields
         inputEmail = (EditText) findViewById(R.id.loginEmail);
         inputPassword = (EditText) findViewById(R.id.loginPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
         loginErrorMsg = (TextView) findViewById(R.id.login_error);
-        db=openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
+        db=openOrCreateDatabase("Spider", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS student(name VARCHAR,email VARCHAR,password VARCHAR);");
         // Login button Click Event
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-               // Toast.makeText(getBaseContext(), "Pasha", Toast.LENGTH_LONG).show();
-                String Spidername="spider";
-                String Spiderpassword="spider";
+                // Toast.makeText(getBaseContext(), "Pasha", Toast.LENGTH_LONG).show();
+                String Spidername = "spider";
+                String Spiderpassword = "spider";
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
-                if(email.equals("spider")  && password.equals("spider")){
-                    Toast.makeText(getBaseContext(), "Server", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(getApplicationContext(),server.class);
-                    startActivity(i);
-                    finish();
-                }
-                else if(email.equals("sarwan")&& password.equals("sarwan")){
-                   Toast.makeText(getBaseContext(), "User", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(getApplicationContext(),Dashboard.class);
-                    startActivity(i);
-                    finish();
-                }
-                Cursor c=db.rawQuery("SELECT * FROM student WHERE email='"+inputEmail.getText()+"'", null);
-                Cursor d=db.rawQuery("SELECT * FROM student WHERE password='"+inputPassword.getText()+"'", null);
-                if(c.getCount()==0&& d.getCount()==0)
-                {
-                    showMessage("Error", "No records found");
+                // user.set_username(inputEmail.getText().toString());
+                if (TextUtils.isEmpty(inputEmail.getText().toString())) {
+                    inputEmail.setError("please fill Email field");
                     return;
                 }
-                StringBuffer buffer=new StringBuffer();
-                while(c.moveToNext())
-                {
-                    buffer.append("Email: "+c.getString(0)+"\n");
-                   buffer.append("Password: "+c.getString(1)+"\n");
+                else if (TextUtils.isEmpty(inputPassword.getText().toString())) {
+                    inputPassword.setError("please fill password field");
+                    return;
+                } else {
+                    if (email.equals("spider") && password.equals("spider")) {
+                        Toast.makeText(getBaseContext(), "Server", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getApplicationContext(), server.class);
+                        startActivity(i);
+                        finish();
+                    } else if (email.equals("sarwan") && password.equals("sarwan")) {
+                        Toast.makeText(getBaseContext(), "User", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getApplicationContext(), Dashboard.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    Cursor c = db.rawQuery("SELECT * FROM student WHERE email='" + inputEmail.getText() + "'", null);
+                    Cursor d = db.rawQuery("SELECT * FROM student WHERE password='" + inputPassword.getText() + "'", null);
+                    if (c.getCount() == 0 && d.getCount() == 0) {
+                        showMessage("Error", "No records found");
+                        return;
+                    }
+                    StringBuffer buffer = new StringBuffer();
+                    while (c.moveToNext()) {
+                        buffer.append("Email: " + c.getString(0) + "\n");
+                        buffer.append("Password: " + c.getString(1) + "\n");
+                    }
+                    // showMessage("Pasha Details", buffer.toString());
+                    Toast.makeText(getBaseContext(), "Sign in Successfull", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), Dashboard.class);
+                    startActivity(i);
+                    finish();
                 }
-               // showMessage("Pasha Details", buffer.toString());
-                Toast.makeText(getBaseContext(), "Sign in Successfull", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(getApplicationContext(),Dashboard.class);
-                startActivity(i);
-                finish();
-           }
+            }
         });
-
 
         // Link to Register Screen
         btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +123,10 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
-
+public String setemail(){
+    userEmail=inputEmail.getText().toString();
+    return userEmail;
+}
     public void showMessage(String title,String message)
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);

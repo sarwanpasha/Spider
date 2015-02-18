@@ -41,8 +41,7 @@
         <EditText
             android:id="@+id/addressArea"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:password="true" />
+            android:layout_height="wrap_content" />
 
         <!--  Password Label -->
         <TextView
@@ -55,8 +54,7 @@
         <EditText
             android:id="@+id/addressStreet"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:password="true" />
+            android:layout_height="wrap_content"/>
 
         <!--  Password Label -->
         <TextView
@@ -69,8 +67,7 @@
         <EditText
             android:id="@+id/addressHouse"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:password="true" />
+            android:layout_height="wrap_content" />
 
         <!--  Error message -->
         <TextView android:id="@+id/login_error"
@@ -88,6 +85,14 @@
             android:layout_marginTop="20dip"
             android:text="Send"
             android:background="#ff858585" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dip"
+            android:text="Back"
+            android:background="#f92b2b2b" />
 
     </LinearLayout>
 

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by Blue Berry on 2/17/2015.
@@ -50,8 +51,7 @@ public class GPSTracker extends Service implements LocationListener {
 
     public Location getLocation() {
         try {
-            locationManager = (LocationManager) mContext
-                    .getSystemService(LOCATION_SERVICE);
+            locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
 
             // getting GPS status
             isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -59,9 +59,15 @@ public class GPSTracker extends Service implements LocationListener {
             // getting network status
             isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (!isGPSEnabled && !isNetworkEnabled) {
+            if (!isGPSEnabled) {
                 // no network provider is enabled
-            } else {
+                Toast.makeText(getBaseContext(), "Please enable GPS", Toast.LENGTH_LONG).show();
+
+            }
+            else if(!isNetworkEnabled){
+                Toast.makeText(getBaseContext(), "No Network", Toast.LENGTH_LONG).show();
+            }
+            else {
                 this.canGetLocation = true;
                 if (isNetworkEnabled) {
                     locationManager.requestLocationUpdates(

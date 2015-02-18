@@ -1,16 +1,21 @@
 package com.example.blueberry.database;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class other_address extends ActionBarActivity {
     Button send;
+    Button back;
     EditText city;
     EditText area;
     EditText street_number;
@@ -22,6 +27,7 @@ public class other_address extends ActionBarActivity {
         setContentView(R.layout.activity_other_address);
 
         send = (Button) findViewById(R.id.btnSend);
+        back = (Button) findViewById(R.id.btnBack);
         city = (EditText) findViewById(R.id.addressCity);
         area = (EditText) findViewById(R.id.addressArea);
         street_number = (EditText) findViewById(R.id.addressStreet);
@@ -32,12 +38,37 @@ public class other_address extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 String sendd = send.getText().toString();
-                String areaa = area.getText().toString();
-                String street_numberr = street_number.getText().toString();
-                String house_numberr = house_number.getText().toString();
+                SendSMS();
 
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Emergency1.class);
+                startActivity(i);
+                finish();
+
+            }
+        });
+
+    }
+    public void SendSMS() {
+String phonenumber="03239549789";
+        String cityy = city.getText().toString();
+        String areaa = area.getText().toString();
+        String street_numberr = street_number.getText().toString();
+        String house_numberr = house_number.getText().toString();
+        try {
+            SmsManager.getDefault().sendTextMessage(String.valueOf(phonenumber),
+                    null, "City = "+cityy + "AREA =  "+areaa + "Steet Number = "+street_numberr+"House Number = "+house_numberr
+                            + " ", null, null);
+        } catch (Exception ex) {
+            Log.d("SMS Error: ", ex.getMessage().toString());
+        }
+        Toast.makeText(getBaseContext(), "Your Detail has been sended", Toast.LENGTH_SHORT).show();
+
 
     }
         @Override

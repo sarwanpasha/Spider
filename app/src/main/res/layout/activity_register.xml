@@ -41,10 +41,10 @@
 
         <!--  Password Label -->
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
-            android:text="Password" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:text="Password" />
         <!--  Password TextField -->
         <EditText
             android:id="@+id/registerPassword"
@@ -52,6 +52,56 @@
             android:layout_height="wrap_content"
             android:password="true" />
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="City" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/registercity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Area" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/registerArea"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"  />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Street number" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/registerStreet"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"  />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="House Number" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/registerHouse"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="CNIC" />
+        <!--  Password TextField -->
+        <EditText
+            android:id="@+id/registerCNIC"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"  />
         <!--  Error message -->
         <TextView android:id="@+id/register_error"
             android:layout_width="fill_parent"
